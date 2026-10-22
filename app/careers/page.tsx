@@ -224,7 +224,15 @@ function InterestForm() {
           </div>
 
           {state.message && (
-            <p className={state.status === "error" ? "text-sm text-destructive" : "text-sm text-primary"} role="status">
+            <p
+              aria-live="polite"
+              className={`rounded-lg border px-4 py-3 text-sm ${
+                state.status === "error"
+                  ? "border-destructive/30 bg-destructive/5 text-destructive"
+                  : "border-primary/30 bg-primary/5 text-primary"
+              }`}
+              role="status"
+            >
               {state.message}
             </p>
           )}
