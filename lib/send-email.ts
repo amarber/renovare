@@ -16,6 +16,9 @@ import { randomUUID } from "node:crypto"
 import { SALON_INBOX } from "./intake-config"
 
 function resolveFrom(): string {
+  const configuredFrom = process.env.RESEND_FROM?.trim()
+  if (configuredFrom) return configuredFrom
+
   const domain = process.env.RESEND_EMAIL_DOMAIN?.trim()
   if (domain) return `Renovaré <notifications@${domain.replace(/^https?:\/\//, "")}>`
   return "Renovaré <onboarding@resend.dev>"
